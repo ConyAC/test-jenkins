@@ -36,26 +36,6 @@ public class HolaControllerTest {
 	.andExpect(header().string("Location", "/hola"));
     }
     
-    @Test
-    public void holaSinParametros() throws Exception {
-	mockMvc.perform(get("/hola"))
-	.andExpect(status().isOk())
-	.andExpect(view().name("hola"))
-	.andExpect(model().attributeExists("nombre"))
-	.andExpect(model().attribute("nombre", is("Mundo")))
-	.andExpect(content().string(containsString("¡Hola Mundo!")))
-	;
-    }
     
-    @Test
-    public void holaDavid() throws Exception {
-	mockMvc.perform(get("/hola?nombre=David"))
-	.andExpect(status().isOk())
-	.andExpect(view().name("hola"))
-	.andExpect(model().attributeExists("nombre"))
-	.andExpect(model().attribute("nombre", is("David")))
-	.andExpect(content().string(containsString("¡Hola David!")))
-	;
-    }
 
 }
